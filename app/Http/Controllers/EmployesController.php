@@ -8,8 +8,8 @@ use App\Employe;
 class EmployesController extends Controller
 {
     public function index(){
-		//$emp = Employe::all();
-		$emp = Employe::latest()->paginate(5);
+		$emp = Employe::all();
+		//$emp = Employe::latest()->paginate(5);
 		return view('employes.index')->with('emp',$emp);
 	}
 	public function create(){
