@@ -63,7 +63,7 @@ class EmployesController extends Controller
 			'salary' => ['required','numeric']
 		]);
 		
-		$oldemp = new Employe;
+		$oldemp = Employe::find($id);
 		
 		$oldemp->employeeName = $request->empname;
 		$oldemp->designation = $request->des;
