@@ -7,8 +7,22 @@ use App\Employe;
 
 class EmployesController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+		$ename = $request->input('ename');
+		$des = $request->input('des');
+		$sal = $request->input('sal');
+		
 		$emp = Employe::all();
+		$emp = $emp->sortBy('id');
+		if(!empty($ename)){
+			$emp = $emp->where('employeeName',$ename);
+		}
+		if(!empty($des)){
+			$emp = $emp->where('designation',$des);
+		}
+		if(!empty($sal)){
+			$emp = $emp->where('salary',$sal);
+		}
 		//$emp = Employe::latest()->paginate(5);
 		return view('employes.index')->with('emp',$emp);
 	}

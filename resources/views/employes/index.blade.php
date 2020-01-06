@@ -4,7 +4,14 @@
 <div class="container mt-5">
 <div class="row">
 	<div class="col-md-6">
-		<input type="text" class="pull-left mr-1"><input type="button" class="btn btn-info pull-left" value="Seach">
+	<form action="{{ route('home') }}" method="get">
+	  <div class="form-group row">
+		<input type="text" class="pull-left mr-1 form-control col-md-2" name="ename" placeholder="Name" value="{{ old('ename') }}">
+		<input type="text" class="pull-left mr-1 form-control col-md-2" name="des" placeholder="Designation" value="{{ old('des') }}">
+		<input type="text" class="pull-left mr-1 form-control col-md-2" name="sal" placeholder="Salary" value="{{ old('sal') }}">
+		<input type="submit" class="btn btn-info form-control col-md-2" value="Seach">
+	 </div>
+	</form>
 	</div>
 	<div class="col-md-6"><button class="btn btn-info pull-right mb-2"><a href="{{ route('create') }}">Add New Record</a></button></div>
 </div>
