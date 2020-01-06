@@ -17,7 +17,7 @@
 */
 Route::get('/', 'EmployesController@index')->name('home');
 Route::get('/create', 'EmployesController@create')->name('create');
-Route::get('/edit/', 'EmployesController@edit')->name('edit');
+Route::get('{id}/edit/', 'EmployesController@edit')->name('edit');
 Route::post('/create/store', 'EmployesController@store')->name('store');
-Route::post('/edit/{id}', 'EmployesController@update')->name('update');
+Route::post('{id}/edit/', 'EmployesController@update')->name('update');
 Route::delete('/edit/delete/{id}','EmployesController@destroy')->name('destroy');

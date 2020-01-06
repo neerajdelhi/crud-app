@@ -51,18 +51,30 @@ class EmployesController extends Controller
 	public function show(){
 		
 	}
-	public function edit(Employe $emp){
-		/*$validateData = $request->validate([
+	public function edit($id){
+		$emp = Employe::all();
+		$editemp = $emp->where('id',$id)->first();
+		return view('employes.edit',compact('editemp',$editemp));
+	}
+	public function update(Request $request,$id){
+		$validateData = $request->validate([
 			'empname' => ['required','regex:/^[a-zA-Z ]+$/i'],
 			'des' => ['required'],
-			'salary' => ['required', 'numeric']
+			'salary' => ['required','numeric']
 		]);
-		*/
-		//$emp = $emp->all();
-		return view('employes.edit',compact('emp',$emp));
-	}
-	public function update(){
-
+		
+		$oldemp = new Employe;
+		
+		$oldemp->employeeName = $request->empname;
+		$oldemp->designation = $request->des;
+		$oldemp->salary = $request->salary;
+		
+		if($oldemp->save()){
+			echo "<script>alert('Record Updated successfully!');</script>";
+			return redirect('/');
+		}else{
+			echo "<script>alert('Error occured while Updated record.');</script>";
+		}
 	}
 	public function destry(){
 		

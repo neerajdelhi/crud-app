@@ -25,7 +25,10 @@
 				<td>{{$e->employeeName}}</td>
 				<td>{{$e->designation}}</td>
 				<td>{{$e->salary}}</td>
-				<td><a href="{{ route('edit',$e->id) }}"><i class="fa fa-pencil"></i></a><i class="fa fa-trash"></i></td>
+				<td>
+					<a href="{{ action('EmployesController@edit',$e->id) }}"><i class="fa fa-edit"></i></a>
+					<a href="{{ route('destroy',$e->id) }}"><i class="fa fa-trash"></i></a>
+				</td>
 			</tr>
 		@endforeach
 		<tbody>
