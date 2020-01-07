@@ -27,7 +27,12 @@
 				<td>{{$e->salary}}</td>
 				<td>
 					<a href="{{ action('EmployesController@edit',$e->id) }}"><i class="fa fa-edit"></i></a>
-					<a href="{{ route('destroy',$e->id) }}"><i class="fa fa-trash"></i></a>
+					<!--<form action="{{ route('destroy',$e->id) }}" method="post">
+						@method('DELETE')
+						@csrf
+						<button class="fa fa-trash" onclick="return confirm('Are you sure!')"></button>
+					</form> -->
+					<a href="{{ route('destroy',$e->id) }}" onclick="return confirm('Are you sure!')"> <i class="fa fa-trash"></i></a>
 				</td>
 			</tr>
 		@endforeach

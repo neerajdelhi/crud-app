@@ -76,7 +76,14 @@ class EmployesController extends Controller
 			echo "<script>alert('Error occured while Updated record.');</script>";
 		}
 	}
-	public function destry(){
+	public function destroy($id){
+		$emp = Employe::find($id);
 		
+		if($emp->delete()){
+			echo "<script>alert('Record deleted successfully!');</script>";
+			return redirect('/');
+		}else{
+			echo "<script>alert('Error occured while Deleting record.');</script>";			
+		}
 	}
 }

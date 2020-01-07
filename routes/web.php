@@ -20,4 +20,4 @@ Route::get('/create', 'EmployesController@create')->name('create');
 Route::get('{id}/edit/', 'EmployesController@edit')->name('edit');
 Route::post('/create/store', 'EmployesController@store')->name('store');
 Route::post('{id}/edit/', 'EmployesController@update')->name('update');
-Route::delete('/edit/delete/{id}','EmployesController@destroy')->name('destroy');
+Route::get('/delete/{id}','EmployesController@destroy')->name('destroy');
