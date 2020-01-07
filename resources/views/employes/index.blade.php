@@ -25,14 +25,9 @@
 				<td>{{$e->employeeName}}</td>
 				<td>{{$e->designation}}</td>
 				<td>{{$e->salary}}</td>
-				<td>{{$e->profile_image}}</td>
+				<td><img style="width:30px;height:30px;"src="{{ asset('storage/profile_image/'.$e->profile_image) }}"></td>
 				<td>
 					<a href="{{ action('EmployesController@edit',$e->id) }}"><i class="fa fa-edit"></i></a>
-					<!--<form action="{{ route('destroy',$e->id) }}" method="post">
-						@method('DELETE')
-						@csrf
-						<button class="fa fa-trash" onclick="return confirm('Are you sure!')"></button>
-					</form> -->
 					<a href="{{ route('destroy',$e->id) }}" onclick="return confirm('Are you sure!')"> <i class="fa fa-trash"></i></a>
 				</td>
 			</tr>
