@@ -27,6 +27,9 @@
 			@endif
 		</div>
 		<div class="form-group">
+			<input type="file" name="logo" class="form-control" placeholder="Please upload a logo">
+		</div>
+		<div class="form-group">
 			<button type="submit" class="btn btn-success">Submit</button>
 		</div>
 	</form>
