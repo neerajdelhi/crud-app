@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Employe;
 
 class EmployesController extends Controller
@@ -120,6 +121,10 @@ class EmployesController extends Controller
 	public function destroy($id){
 		$emp = Employe::find($id);
 		
+		if($emp->profile_image != 'noimage.jpg'){
+			//Delete Image
+			Storage::delete('public/profile_image/'.$emp->profile_image);
+		}
 		if($emp->delete()){
 			echo "<script>alert('Record deleted successfully!');</script>";
 			return redirect('/');
