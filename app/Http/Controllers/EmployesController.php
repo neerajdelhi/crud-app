@@ -82,14 +82,33 @@ class EmployesController extends Controller
 		$validateData = $request->validate([
 			'empname' => ['required','regex:/^[a-zA-Z ]+$/i'],
 			'des' => ['required'],
-			'salary' => ['required','numeric']
+			'salary' => ['required','numeric'],
 		]);
 		
+		if($request->hasFile('profile_image')){
+			//get file name with extension
+			$fileWithExt = $request->file('profile_image')->getClientOriginalName();
+			
+			//get filename
+			$filename = pathinfo($fileWithExt, PATHINFO_EXTENSION);
+			
+			//get extension
+			$extension = $request->file('profile_image')->getClientOriginalExtension();
+			
+			//filename to store
+			$fileNameToStore = $filename."_".time().".".$fileWithExt;
+			
+			//file to store
+			$path = $request->file('profile_image')->storeAs('public/profile_image',$fileNameToStore);
+		}
 		$oldemp = Employe::find($id);
 		
 		$oldemp->employeeName = $request->empname;
 		$oldemp->designation = $request->des;
 		$oldemp->salary = $request->salary;
+		if($request->hasFile('profile_image')){
+			$oldemp->profile_image = $fileNameToStore;
+		}
 		
 		if($oldemp->save()){
 			echo "<script>alert('Record Updated successfully!');</script>";
