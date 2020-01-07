@@ -16,7 +16,7 @@
 	<div class="col-md-6"><button class="btn btn-info pull-right mb-2"><a href="{{ route('create') }}">Add New Record</a></button></div>
 </div>
 	<table class="table table-striped">
-		<thead><tr><td>Id</td><td>Employee Name</td><td>Designation</td><td>Salary</td><td>Actions</td></tr><thead>
+		<thead><tr><td>Id</td><td>Employee Name</td><td>Designation</td><td>Salary</td><td>Image</td><td>Actions</td></tr><thead>
 		
 		<tbody>
 		@foreach($emp as $e)
@@ -25,6 +25,7 @@
 				<td>{{$e->employeeName}}</td>
 				<td>{{$e->designation}}</td>
 				<td>{{$e->salary}}</td>
+				<td>{{$e->profile_image}}</td>
 				<td>
 					<a href="{{ action('EmployesController@edit',$e->id) }}"><i class="fa fa-edit"></i></a>
 					<!--<form action="{{ route('destroy',$e->id) }}" method="post">

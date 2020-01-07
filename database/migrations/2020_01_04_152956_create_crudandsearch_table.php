@@ -17,7 +17,8 @@ class CreateCrudandsearchTable extends Migration
             $table->bigIncrements('id');
 			$table->string('employeeName');
 			$table->string('designation');
-			$table->string('salary');
+			$table->string('salary')->nullable();
+			$table->string('profile_image');
             $table->timestamps();
         });
     }

@@ -33,13 +33,35 @@ class EmployesController extends Controller
 		$validateData = $request->validate([
 			'empname' => ['required','regex:/^[a-zA-Z ]+$/i'],
 			'des' => ['required'],
-			'salary' => ['required','numeric']
+			'salary' => ['required','numeric'],
+			'profile_image' => ['image','nullable','max:1999']
 		]);
+		
+		//handle image
+		if($request->hasFile('profile_image')){
+			//get file name with extension
+			$fileWithExt = $request->file('profile_image')->getClientOriginalName();
+			
+			//get file name
+			$filename = pathinfo($fileWithExt, PATHINFO_EXTENSION);
+			
+			//get file extension
+			$extension = $request->file('profile_image')->getClientOriginalExtension();
+			
+			//filename to store
+			$fileNameToStore = $filename."_".time().".".$extension;
+			
+			//file to store
+			$path = $request->file('profile_image')->storeAs('public/profile_image', $fileNameToStore);
+		}else{
+				$fileNameToStore = 'noimage.jpg';
+		}
 		
 		$crud = new Employe;
 		$crud->employeeName = $request->empname;
 		$crud->designation = $request->des;
 		$crud->salary = $request->salary;
+		$crud->profile_image = $fileNameToStore;
 		
 		if($crud->save()){
 			echo "<script>alert('Record save successfully!');</script>";
