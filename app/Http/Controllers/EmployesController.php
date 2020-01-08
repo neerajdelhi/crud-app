@@ -108,6 +108,7 @@ class EmployesController extends Controller
 		$oldemp->designation = $request->des;
 		$oldemp->salary = $request->salary;
 		if($request->hasFile('profile_image')){
+			Storage::delete('public/profile_image/'.$oldemp->profile_image);
 			$oldemp->profile_image = $fileNameToStore;
 		}
 		
