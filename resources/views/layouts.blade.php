@@ -3,6 +3,8 @@
 <head><title>Crud and Search</title>
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ asset('assets/css/dropzone.css') }}">
+@yield('styles')
 <style>
 button a, button a:hover{
 	color:white;
@@ -14,5 +16,7 @@ button a, button a:hover{
 @yield('content')
 <script src="{{ asset('assets/js/jquery-3.4.1.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/dropzone.js') }}"></script>
+@yield('scripts');
 </body>
 </html>

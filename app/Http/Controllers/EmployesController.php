@@ -43,11 +43,11 @@ class EmployesController extends Controller
 			//get file name with extension
 			$fileWithExt = $request->file('profile_image')->getClientOriginalName();
 			
-			//get file name
-			$filename = pathinfo($fileWithExt, PATHINFO_EXTENSION);
-			
 			//get file extension
 			$extension = $request->file('profile_image')->getClientOriginalExtension();
+			
+			//get file name
+			$filename = basename($fileWithExt,$extension);
 			
 			//filename to store
 			$fileNameToStore = $filename."_".time().".".$extension;
@@ -90,11 +90,12 @@ class EmployesController extends Controller
 			//get file name with extension
 			$fileWithExt = $request->file('profile_image')->getClientOriginalName();
 			
-			//get filename
-			$filename = pathinfo($fileWithExt, PATHINFO_EXTENSION);
-			
 			//get extension
 			$extension = $request->file('profile_image')->getClientOriginalExtension();
+			
+			
+			//get filename
+			$filename = basename($fileWithExt,$extension);
 			
 			//filename to store
 			$fileNameToStore = $filename."_".time().".".$fileWithExt;
